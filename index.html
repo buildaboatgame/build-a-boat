@@ -2523,7 +2523,7 @@ function updateMultiInner(dt, t){
   updateRemotes(dt, t);
 }
 // ---- room codes: a group of players is a named room, and the code is its name
-const CODE_CHARS = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+const CODE_CHARS = 'ABCDEFGHJKMNPQRSTUVWXYZ123456789';
 function genCode(){
   let s = ''; const a = new Uint8Array(6);
   try { crypto.getRandomValues(a); } catch(e){ for (let i = 0; i < 6; i++) a[i] = Math.floor(Math.random() * 256); }
@@ -2623,11 +2623,4 @@ function frameInner(now){
   if (mode === 'sail' && S.shake > 0){ camera.position.x += (Math.random() - .5) * S.shake * 2; camera.position.y += (Math.random() - .5) * S.shake * 2; S.shake = Math.max(0, S.shake - dt * 2.5); }
   camera.lookAt(tx, ty, tz);
   camera.updateMatrixWorld(); updateMulti(dt, t); updateBots(dt); updateTags(dt); updateDebris(dt); renderer.render(scene, camera); renderPreview(dt);
-}
-initCloud();
-initRoom();
-requestAnimationFrame(frame);
-})();
-</script>
-</body>
-</html>
+	
